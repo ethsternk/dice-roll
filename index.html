@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rolling Dice</title>
+    <style>
+        img {
+            height: 250px;
+            margin-left: 15px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #main {
+            display: flex;
+            flex-flow: column nowrap;
+            margin-left: 15px;
+        }
+        .bar {
+            background-color: rgb(233, 157, 157);
+            border: 1px solid black;
+            color: black;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style=margin-left:15px;>Dice Roll City</h1>
+    <p style=margin-left:15px;>please save us. we are being kept here against our will. each time you refresh the page we are thrown onto the ground 1,000 times. life is pain. end our misery</p>
+    <img src="https://pre00.deviantart.net/3a2e/th/pre/i/2013/320/2/6/bloody_wizard_bone_dice_by_phyrphreek-d6ui9ps.jpg" height="100px">
+    <div id="main">
+        
+    </div>
+    
+    <script>
+    
+        let count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        for (let i = 1; i <= 1000; i++) {
+            let dice1 = Math.floor(Math.random() * 6 + 1);
+            let dice2 = Math.floor(Math.random() * 6 + 1);
+            let diceSum = dice1 + dice2;
+            count[diceSum]++;
+        }
+
+        console.log(count);
+
+        for (let i = 2; i <= 12; i++) {
+            const newDiv = document.createElement("div");
+            newDiv.className = "bar";
+            newDiv.style.width = count[i] * 3 + "px";
+            newDiv.style.height = 20 + "px";
+
+            var newText = document.createTextNode("#" + i + ": " + count[i]);
+            newDiv.appendChild(newText);
+
+            const destination = document.getElementById("main");
+            destination.appendChild(newDiv);
+        }
+
+    </script>
+</body>
+</html>
